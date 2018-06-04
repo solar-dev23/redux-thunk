@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button } from 'reactstrap';
+import { Button,FormGroup } from 'reactstrap';
 import renderField from './renderField';
 
 const validate = (values) => {
@@ -11,7 +11,8 @@ const validate = (values) => {
   return errors;
 };
 
-const SearchForm = ({ handleSubmit, pristine, submitting }) => {
+const SearchForm = ({ handleSubmit, pristine, submitting/*, fields: {keyword}*/ }) => {
+  
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
@@ -23,17 +24,25 @@ const SearchForm = ({ handleSubmit, pristine, submitting }) => {
         type="text"
         label="Keyword"
         placeholder="Enter a keyword"
+        //{...keyword}
       />
       <div>
-        <Button type="submit" disabled={pristine || submitting}>
-          Submit
-        </Button>
+        <FormGroup>
+          <Button type="submit" disabled={submitting}>
+            Submit
+          </Button>
+        </FormGroup>
       </div>
     </form>
   );
 };
-
+/*function mapStateToProps(state){
+  return {
+    initialValues: {'keyword':'some'}
+  }
+}*/
 export default reduxForm({
   form: 'searchForm',
   validate,
-})(SearchForm);
+  //fields: ['keyword']
+}/*, mapStateToProps*/ )(SearchForm);

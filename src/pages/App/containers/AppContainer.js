@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
 
-import { fetchImage } from '../modules/actions';
+import { fetchGit } from '../modules/actions';
 
 export default connect(
-  ({ app }) => ({ ...app }),
+  ({ app, initval }) => ({ ...app, ...initval }),
   (dispatch) => ({
-    fetchImage: (keyword) => dispatch(fetchImage(keyword)),
+    fetchGit: (keyword) => dispatch(fetchGit(keyword)),
   }),
 )(App);

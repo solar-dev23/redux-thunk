@@ -25,7 +25,7 @@ export const searchError = (errors) => {
   };
 };
 
-export const fetchImage = (keyword) => {
+export const fetchGit = (keyword) => {
   return (dispatch) => {
     dispatch(searchStart());
     axios.get(`https://api.github.com/users/${keyword}/repos`)

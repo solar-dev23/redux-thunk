@@ -6,24 +6,26 @@ import SearchForm from './SearchForm';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.fetchImage = this.fetchImage.bind(this);
+    this.fetchGit = this.fetchGit.bind(this);
+    const {initval} = this.props;
+    this.fetchGit(initval);
   }
-  fetchImage({ keyword }) {
-    this.props.fetchImage(keyword);
+  fetchGit({ keyword }) {
+    this.props.fetchGit(keyword);
   }
   render() {
-    const {loading,userdata} = this.props;
+    const {loading,userdata,initval} = this.props;
     console.log(userdata)
     return (
       <Container>
         <Row>
           <Col>
-            <h1>Image Gallery</h1>
+            <h1>GitHub Gallery</h1>
           </Col>
         </Row>
         <Row>
           <Col>
-            <SearchForm onSubmit={this.fetchImage} />
+            <SearchForm onSubmit={this.fetchGit} initialValues={initval}/>
           </Col>
         </Row>
         { loading && <div>loading...</div> }

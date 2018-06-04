@@ -1,15 +1,19 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Label, Input, Col} from 'reactstrap';
 
 const renderField = ({
   input,
   label,
   type,
   meta: { touched, error, warning },
+  //initsearch,
 }) => (
-  <FormGroup>
-    <Label>{label}</Label>
-    <Input {...input} placeholder={label} type={type} />
+  <FormGroup row>
+    <Label for="keywordid" sm={1}>{label}</Label>
+    <Col sm={8}>
+      <Input id="keywordid" {...input} placeholder={label} type={type} />
+    </Col>
+   
     {touched &&
       ((error && <span>{error}</span>) ||
         (warning && <span>{warning}</span>))}
