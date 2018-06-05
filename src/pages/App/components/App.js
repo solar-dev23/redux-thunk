@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.fetchGit = this.fetchGit.bind(this);
     const {initval} = this.props;
+    console.log("---");console.log(initval);
     this.fetchGit(initval);
   }
   fetchGit({ keyword }) {
@@ -25,7 +26,7 @@ class App extends Component {
         </Row>
         <Row>
           <Col>
-            <SearchForm onSubmit={this.fetchGit} initialValues={initval}/>
+            <SearchForm onSubmit={this.fetchGit} initValues={initval}/>
           </Col>
         </Row>
         { loading && <div>loading...</div> }
