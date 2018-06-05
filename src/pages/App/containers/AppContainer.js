@@ -6,6 +6,6 @@ import { fetchGit } from '../modules/actions';
 export default connect(
   ({ app }) => ({ ...app}),
   (dispatch) => ({
-    fetchGit: (keyword) => dispatch(fetchGit(keyword)),
+    fetchGit: (options) => dispatch(fetchGit(options)),
   }),
 )(App);

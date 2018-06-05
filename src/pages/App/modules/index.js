@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
   userdata: null,
   errors: null,
-  initval: {"keyword":"lionkingman"},
+  initval: {"keyword":"lionkingman","searchtype":"user"},
 };
 
 const app = (state = initialState, action) => {

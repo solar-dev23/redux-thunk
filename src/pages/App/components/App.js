@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container,Row,Col,Card,CardImg} from 'reactstrap'
+import {Container,Row,Col} from 'reactstrap'
 import './App.css';
 import SearchForm from './SearchForm';
 
@@ -8,15 +8,15 @@ class App extends Component {
     super(props);
     this.fetchGit = this.fetchGit.bind(this);
     const {initval} = this.props;
-    console.log("---");console.log(initval);
+    //console.log("---");console.log(initval);
     this.fetchGit(initval);
   }
-  fetchGit({ keyword }) {
-    this.props.fetchGit(keyword);
+  fetchGit(options) {
+    this.props.fetchGit(options);
   }
   render() {
     const {loading,userdata,initval} = this.props;
-    console.log(userdata)
+    //console.log(userdata)
     return (
       <Container>
         <Row>
@@ -32,12 +32,15 @@ class App extends Component {
         { loading && <div>loading...</div> }
         { !loading && userdata && userdata.length > 0 &&
           userdata.map((user, index) => {
-            return <Row key={index} ><Col> <div className="block-class">
-                    <img src={user.owner.avatar_url} alt="avatar" className="avatar-class"/>
-                    <a href={user.owner.html_url}><h5>{user.owner.login}</h5></a><br />
-                    <a href={user.html_url}><h5>{user.name}</h5></a>
-                    </div>
-            </Col></Row>
+            return (
+              <Row key={index} >
+                <Col> <div className="block-class">
+                  <img src={user.owner.avatar_url} alt="avatar" className="avatar-class"/>
+                  <a href={user.owner.html_url}><h5>{user.owner.login}</h5></a><br />
+                  <a href={user.html_url}><h5>{user.name}</h5></a>
+                  </div>
+                </Col>
+              </Row>)
           })
         }
       </Container>
