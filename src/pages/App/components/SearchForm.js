@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Button,FormGroup } from 'reactstrap';
+import { Button,FormGroup,Row,Col } from 'reactstrap';
 import renderField from './renderField';
+import renderSelectField from './renderSelectField';
 
 const validate = (values) => {
   const errors = {};
@@ -31,7 +32,8 @@ class SearchForm extends Component {
         e.preventDefault();
         handleSubmit();
       }}>
-        <FormGroup>
+      <Row>  
+        <Col md={'auto'}>
           <Field
             name="keyword"
             component={renderField}
@@ -40,12 +42,23 @@ class SearchForm extends Component {
             placeholder="Enter a keyword"
             //{...keyword}
           />
-            
+        </Col>
+        <Col md={'auto'}> 
+          <Field
+            name="searchtype"
+            component={renderSelectField}
+            type="text"
+            label="Type"
+            //placeholder="Enter a keyword"
+            //{...keyword}
+          />
+        </Col>
+        <Col md={'auto'}>   
           <Button type="submit" disabled={submitting}>
             Submit
           </Button>
-        
-        </FormGroup>
+        </Col>
+      </Row>  
       </form>
     );
   }

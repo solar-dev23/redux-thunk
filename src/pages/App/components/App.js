@@ -20,28 +20,24 @@ class App extends Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col align = 'center' className="title-class">
             <h1>GitHub Gallery</h1>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="ml-20">
             <SearchForm onSubmit={this.fetchGit} initValues={initval}/>
           </Col>
         </Row>
         { loading && <div>loading...</div> }
         { !loading && userdata && userdata.length > 0 &&
           userdata.map((user, index) => {
-            return <Row key={index}><Col  xs="12" sm="6" md="4" lg="3">
-              <Card>
-                <CardImg src={user.owner.avatar_url} />
-              </Card>
-            </Col>
-            <Col xs="12" sm="6" md="4" lg="3">
-            <a href={user.owner.html_url}><h5>{user.owner.login}</h5></a>
-            <a href={user.html_url}><h5>{user.name}</h5></a>
-            </Col>
-            </Row>
+            return <Row key={index} ><Col> <div className="block-class">
+                    <img src={user.owner.avatar_url} alt="avatar" className="avatar-class"/>
+                    <a href={user.owner.html_url}><h5>{user.owner.login}</h5></a><br />
+                    <a href={user.html_url}><h5>{user.name}</h5></a>
+                    </div>
+            </Col></Row>
           })
         }
       </Container>

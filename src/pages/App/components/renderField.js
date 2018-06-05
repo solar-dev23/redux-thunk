@@ -9,8 +9,8 @@ const renderField = ({
   //initsearch,
 }) => (
   <FormGroup row>
-    <Label for="keywordid" sm={1}>{label}</Label>
-    <Col sm={8}>
+    <Label for="keywordid" >{label}</Label>
+    <Col>
       <Input id="keywordid" {...input} placeholder={label} type={type} />
     </Col>
    
