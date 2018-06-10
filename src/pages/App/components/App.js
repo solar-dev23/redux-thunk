@@ -21,7 +21,7 @@ class App extends Component {
       <Container>
         <Row>
           <Col align = 'center' className="title-class">
-            <h1>GitHub Gallery</h1>
+            <h1>GitHub Gallery Thunk</h1>
           </Col>
         </Row>
         <Row>
