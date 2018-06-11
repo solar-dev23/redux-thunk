@@ -35,9 +35,17 @@ class App extends Component {
             return (
               <Row key={index} >
                 <Col> <div className="block-class">
-                  <img src={user.owner.avatar_url} alt="avatar" className="avatar-class"/>
-                  <a href={user.owner.html_url}><h5>{user.owner.login}</h5></a><br />
-                  <a href={user.html_url}><h5>{user.name}</h5></a>
+                  <Col>
+                    <img src={user.avatar_url} alt="avatar" className="avatar-class"/>
+                  </Col>
+                  <Col>
+                    <Row>
+                      <a href={user.html_url}><h5>{user.login}</h5></a>
+                    </Row>
+                    <Row>
+                      <a href={user.html_url + "?tab=repositories"}><h5>Repository</h5></a>
+                    </Row>
+                  </Col>
                   </div>
                 </Col>
               </Row>)

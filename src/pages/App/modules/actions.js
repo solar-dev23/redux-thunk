@@ -25,17 +25,14 @@ export const searchError = (errors) => {
   };
 };
 
-export const fetchGit = ({keyword,searchtype}) => {
+export const fetchGit = ({keyword}) => {
   return (dispatch) => {
     dispatch(searchStart());
-    const url = (searchtype==='user') ? `https://api.github.com/users/${keyword}/repos`
-    : `https://api.github.com/search/repositories?q=${keyword}`;
-    console.log(url)
-    axios.get(url)
+    axios.get(`https://api.github.com/search/users?q=${keyword}`)
       .then((response) => {
         //const reposes = response.data.items.map((repos) => image.images.original.url);
-        const retdata = (searchtype==='user')? response.data : response.data.items;
-        dispatch(searchSuccess(retdata));
+        console.log(response.data.items)
+        dispatch(searchSuccess(response.data.items));
       })
       .catch((error) => {
         dispatch(searchError(error));
